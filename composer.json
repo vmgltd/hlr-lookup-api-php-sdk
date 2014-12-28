@@ -1,0 +1,22 @@
+{
+    "name": "vmgltd/hlr-lookup-api-php-sdk",
+    "description": "Official HLR Lookup API PHP SDK by www.hlr-lookups.com",
+    "require": {
+        "php": ">=5.3.0",
+        "lib-curl": "*",
+        "lib-openssl": "*"
+    },
+    "license": "Apache 2.0",
+    "authors": [
+        {
+            "name": "Velocity Made Good Ltd.",
+            "email": "service@hlr-lookups.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-0": {
+            "VmgLtd": "src/"
+        }
+    }
+}
