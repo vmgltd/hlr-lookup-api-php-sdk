@@ -8,6 +8,7 @@ Requirements
 ------------
 * PHP >=5.3.0
 * cURL extension for PHP
+* OpenSSL extension for PHP
 
 The SDK can be installed with Composer or as a drop-in with simple PHP file includes.
 
