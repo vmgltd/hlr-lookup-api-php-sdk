@@ -13,7 +13,8 @@
             "email": "service@hlr-lookups.com"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-0": {
             "VmgLtd": "src/"
