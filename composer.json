@@ -9,8 +9,7 @@
     "homepage": "https://www.hlr-lookups.com",
     "require": {
         "php": ">=5.3.0",
-        "lib-curl": "*",
-        "lib-openssl": "*"
+        "ext-curl": "*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
