@@ -36,6 +36,9 @@ use VmgLtd\HlrLookupClient;
 $client = new HlrLookupClient('username', 'password');
 
 echo $client->submitSyncLookupRequest('+491788735000');
+echo $client->getBalance();
+echo $client->setAsyncCallbackUrl('http://user:pass@www.your-server.com/path/file');
+echo $client->submitAsyncLookupRequest(array('+491788735000','+491788735001'));
 ```
 
 Installation as Drop-In
@@ -49,6 +52,9 @@ include "HlrLookupClient.php";
 $client = new \VmgLtd\HlrLookupClient('username', 'password');
 
 echo $client->submitSyncLookupRequest('+491788735000');
+echo $client->getBalance();
+echo $client->setAsyncCallbackUrl('http://user:pass@www.your-server.com/path/file');
+echo $client->submitAsyncLookupRequest(array('+491788735000','+491788735001'));
 ```
 
 With that you should be ready to go!
