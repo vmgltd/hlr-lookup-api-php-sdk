@@ -180,7 +180,7 @@ The code contains annotations and you can find usage examples as tests in `tests
 * `tests/test-composer.php`
 * `tests/test-drop-in.php`
 
-Please refer to https://www.hlr-lookups.com/en/sdks/php for further documentation or send us an email to service@hlr-lookups.com.
+Please refer to https://www.hlr-lookups.com/en/sdk-php for further documentation or send us an email to service@hlr-lookups.com.
 
 Support and Feedback
 --------------------
