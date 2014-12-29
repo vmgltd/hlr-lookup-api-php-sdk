@@ -2,6 +2,8 @@ hlr-lookup-api-php-sdk
 ======================
 Official HLR Lookup API PHP SDK by www.hlr-lookups.com
 
+This SDK implements the REST API documented at https://www.hlr-lookups.com/en/api-docs
+
 For SDKs in different languages, see https://www.hlr-lookups.com/en/sdks
 
 Requirements
@@ -183,5 +185,14 @@ Please refer to https://www.hlr-lookups.com/en/sdks/php for further documentatio
 Support and Feedback
 --------------------
 Your feedback is appreciated! If you have specific problems or bugs with this SDK, please file an issue on Github. For general feedback and support requests, send an email to service@hlr-lookups.com.
+
+Contributing
+------------
+
+1. Fork it ( https://github.com/vmgltd/hlr-lookup-api-php-sdk/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
 
 
