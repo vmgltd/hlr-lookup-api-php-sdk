@@ -101,7 +101,7 @@ class HlrLookupClient {
     /**
      * Sets the callback URL for asynchronous lookups. Read more about the concept of asynchronous HLR lookups @ http://www.hlr-lookups.com/en/asynchronous-hlr-lookup-api
      *
-     * @param string $url
+     * @param string $url - callback url on your server
      * @return string (JSON)
      *
      * Return example: {"success":true,"messages":[],"results":{"url":"http:\/\/user:pass@www.your-server.com\/path\/file"}}
