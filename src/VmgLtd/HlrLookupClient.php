@@ -183,7 +183,7 @@ class HlrLookupClient {
     }
 
     /**
-     * Sets the callback URL for asynchronous number type lookups. Read more about the concept of asynchronous HLR lookups @ http://www.hlr-lookups.com/en/asynchronous-hlr-lookup-api
+     * Sets the callback URL for asynchronous number type lookups.
      *
      * @param string $url - callback url on your server
      * @return string (JSON)
