@@ -99,7 +99,7 @@ class HlrLookupClient {
     }
 
     /**
-     * Sets the callback URL for asynchronous lookups. Read more about the concept of asynchronous HLR lookups @ http://www.hlr-lookups.com/en/asynchronous-hlr-lookup-api
+     * Sets the callback URL for asynchronous HLR lookups. Read more about the concept of asynchronous HLR lookups @ http://www.hlr-lookups.com/en/asynchronous-hlr-lookup-api
      *
      * @param string $url - callback url on your server
      * @return string (JSON)
@@ -124,6 +124,90 @@ class HlrLookupClient {
     }
 
     /**
+     * Submits a synchronous number type lookup request. The HLR is queried in real time and results presented in the response body.
+     *
+     * @param string $number - A number in international format, e.g. +491788735000
+     * @param null $route - An optional route assignment, see: http://www.hlr-lookups.com/en/routing-options
+     * @param null $storage - An optional storage assignment, see: http://www.hlr-lookups.com/en/storages
+     * @return string (JSON)
+     *
+     * Return example: {"success":true,"messages":[],"results":[{"id":"3cdb4e4d0ec1","number":"+4989702626","numbertype":"LANDLINE","state":"COMPLETED","isvalid":"Yes","ispossiblyported":"No","isvalidshortnumber":"No","isvanitynumber":"No","qualifiesforhlrlookup":"No","originalcarrier":null,"countrycode":"DE","mcc":null,"mnc":null,"mccmnc":null,"region":"Munich","timezones":["Europe\/Berlin"],"infotext":"This is a landline number.","usercharge":"0.0050","inserttime":"2015-12-04 13:02:48.415133+00","storage":"SYNC-API-NT-2015-12","route":"LC1"}]}
+     */
+    public function submitSyncNumberTypeLookupRequest($number = '', $route = null, $storage = null) {
+
+        return self::normalizeResponse(self::sendRequest(new CurlRequestParameters(
+            $this->scheme,
+            $this->host,
+            $this->path,
+            http_build_query(array(
+                'username' => $this->username,
+                'password' => $this->password,
+                'action' => 'submitSyncNumberTypeLookupRequest',
+                'number' => $number,
+                'route' => $route ? $route : null,
+                'storage' => $storage ? $storage : null
+            ), '', '&'),
+            HTTP_REQUEST_TYPE_GET
+        )));
+
+    }
+
+
+    /**
+     * Submits asynchronous number type Lookups containing up to 1,000 MSISDNs per request. Results are sent back asynchronously to a callback URL on your server. Use \VmgLtd\HlrCallbackHandler to capture them.
+     *
+     * @param array $numbers - A list of phone numbers in international format, e.g. +491788735000
+     * @param null $route - An optional route assignment, see: http://www.hlr-lookups.com/en/routing-options
+     * @param null $storage - An optional storage assignment, see: http://www.hlr-lookups.com/en/storages
+     * @return string (JSON)
+     *
+     * Return example: {"success":true,"messages":[],"results":{"acceptedNumbers":[{"id":"4f0820c76fb7","number":"+4989702626"},{"id":"9b9a7dab11a4","number":"+491788735000"}],"rejectedNumbers":[],"acceptedNumberCount":2,"rejectedNumberCount":0,"totalCount":2,"charge":0.01,"storage":"ASYNC-API-NT-2015-12","route":"LC1"}}
+     */
+    public function submitAsyncNumberTypeLookupRequest($numbers = array(), $route = null, $storage = null) {
+
+        return self::normalizeResponse(self::sendRequest(new CurlRequestParameters(
+            $this->scheme,
+            $this->host,
+            $this->path,
+            http_build_query(array(
+                'username' => $this->username,
+                'password' => $this->password,
+                'action' => 'submitAsyncLookupRequest',
+                'numbers' => self::convertMsisdnsArrayToString($numbers),
+                'route' => $route ? $route : null,
+                'storage' => $storage ? $storage : null
+            ), '', '&'),
+            HTTP_REQUEST_TYPE_GET
+        )));
+
+    }
+
+    /**
+     * Sets the callback URL for asynchronous number type lookups. Read more about the concept of asynchronous HLR lookups @ http://www.hlr-lookups.com/en/asynchronous-hlr-lookup-api
+     *
+     * @param string $url - callback url on your server
+     * @return string (JSON)
+     *
+     * Return example: {"success":true,"messages":[],"results":{"url":"http:\/\/user:pass@www.your-server.com\/path\/file"}}
+     */
+    public function setNtAsyncCallbackUrl($url = '') {
+
+        return self::normalizeResponse(self::sendRequest(new CurlRequestParameters(
+            $this->scheme,
+            $this->host,
+            $this->path,
+            http_build_query(array(
+                'username' => $this->username,
+                'password' => $this->password,
+                'action' => 'setNtAsyncCallbackUrl',
+                'url' => $url
+            ), '', '&'),
+            HTTP_REQUEST_TYPE_GET
+        )));
+
+    }
+
+    /**
      * Returns the remaining balance (EUR) in your account.
      *
      * @return string (JSON)
@@ -140,6 +224,29 @@ class HlrLookupClient {
                 'username' => $this->username,
                 'password' => $this->password,
                 'action' => 'getBalance'
+            ), '', '&'),
+            HTTP_REQUEST_TYPE_GET
+        )));
+
+    }
+
+    /**
+     * Performs a system health check and returns a sanity report.
+     *
+     * @return string (JSON)
+     *
+     * Return example: {"success":true,"results":{"system":{"state":"up"},"routes":{"states":{"IP1":"up","ST2":"up","SV3":"up","IP4":"up","XT5":"up","XT6":"up","NT7":"up","LC1":"up"}},"account":{"lookupsPermitted":true,"balance":"509.35500"}}}
+     */
+    public function doHealthCheck() {
+
+        return self::normalizeResponse(self::sendRequest(new CurlRequestParameters(
+            $this->scheme,
+            $this->host,
+            $this->path,
+            http_build_query(array(
+                'username' => $this->username,
+                'password' => $this->password,
+                'action' => 'doHealthCheck'
             ), '', '&'),
             HTTP_REQUEST_TYPE_GET
         )));

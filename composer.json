@@ -4,7 +4,9 @@
     "keywords": [
         "hlr",
         "hlr lookup",
-        "hlr lookup api"
+        "hlr lookup api",
+        "number type lookups",
+        "landline lookups"
     ],
     "homepage": "https://www.hlr-lookups.com",
     "require": {
@@ -29,6 +31,6 @@
         "issues": "https://github.com/vmgltd/hlr-lookup-api-php-sdk/issues",
         "source": "https://github.com/vmgltd/hlr-lookup-api-php-sdk"
     },
-    "version": "0.0.9",
+    "version": "0.0.10",
     "license": "Apache-2.0"
 }
