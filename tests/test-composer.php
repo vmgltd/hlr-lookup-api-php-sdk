@@ -19,6 +19,18 @@ echo "\n\n";
 
 
 /**
+ * Performs a system health check and returns a sanity report.
+ *
+ * @return string (JSON)
+ *
+ * Return example: {"success":true,"messages":[],"results":{"balance":"5878.24600"}}
+ */
+echo "\n\n";
+echo $client->doHealthCheck();
+echo "\n\n";
+
+
+/**
  * Submits a synchronous HLR Lookup request. The HLR is queried in real time and results presented in the response body.
  *
  * @param string $msisdn - An MSISDN in international format, e.g. +491788735000
@@ -30,6 +42,20 @@ echo "\n\n";
  */
 echo "\n\n";
 echo $client->submitSyncLookupRequest('+491788735000');
+echo "\n\n";
+
+/**
+ * Submits a synchronous number type lookup request. The HLR is queried in real time and results presented in the response body.
+ *
+ * @param string $number - A number in international format, e.g. +491788735000
+ * @param null $route - An optional route assignment, see: http://www.hlr-lookups.com/en/routing-options
+ * @param null $storage - An optional storage assignment, see: http://www.hlr-lookups.com/en/storages
+ * @return string (JSON)
+ *
+ * Return example: {"success":true,"results":[{"id":"3cdb4e4d0ec1","number":"+4989702626","numbertype":"LANDLINE","state":"COMPLETED","isvalid":"Yes","ispossiblyported":"No","isvalidshortnumber":"No","isvanitynumber":"No","qualifiesforhlrlookup":"No","originalcarrier":null,"countrycode":"DE","mcc":null,"mnc":null,"mccmnc":null,"region":"Munich","timezones":["Europe\/Berlin"],"infotext":"This is a landline number.","usercharge":"0.0050","inserttime":"2015-12-04 13:02:48.415133+00","storage":"SYNC-API-NT-2015-12","route":"LC1"}]}
+ */
+echo "\n\n";
+echo $client->submitSyncNumberTypeLookupRequest('+4989702626');
 echo "\n\n";
 
 
@@ -58,6 +84,32 @@ echo "\n\n";
  */
 echo "\n\n";
 echo $client->submitAsyncLookupRequest(array('+491788735000','+491788735001'));
+echo "\n\n";
+
+/**
+ * Sets the callback URL for asynchronous number type lookups. Read more about the concept of asynchronous HLR lookups @ http://www.hlr-lookups.com/en/asynchronous-hlr-lookup-api
+ *
+ * @param string $url - callback url on your server
+ * @return string (JSON)
+ *
+ * Return example: {"success":true,"messages":[],"results":{"url":"http:\/\/user:pass@www.your-server.com\/path\/file"}}
+ */
+echo "\n\n";
+echo $client->setNtAsyncCallbackUrl('http://user:pass@www.your-server.com/path/file');
+echo "\n\n";
+
+/**
+ * Submits asynchronous number type Lookups containing up to 1,000 MSISDNs per request. Results are sent back asynchronously to a callback URL on your server. Use \VmgLtd\HlrCallbackHandler to capture them.
+ *
+ * @param array $numbers - A list of phone numbers in international format, e.g. +491788735000
+ * @param null $route - An optional route assignment, see: http://www.hlr-lookups.com/en/routing-options
+ * @param null $storage - An optional storage assignment, see: http://www.hlr-lookups.com/en/storages
+ * @return string (JSON)
+ *
+ * Return example: {"success":true,"messages":[],"results":{"acceptedNumbers":[{"id":"4f0820c76fb7","number":"+4989702626"},{"id":"9b9a7dab11a4","number":"+491788735000"}],"rejectedNumbers":[],"acceptedNumberCount":2,"rejectedNumberCount":0,"totalCount":2,"charge":0.01,"storage":"ASYNC-API-NT-2015-12","route":"LC1"}}
+ */
+echo "\n\n";
+echo $client->submitAsyncNumberTypeLookupRequest(array('+4989702626','+491788735000'));
 echo "\n\n";
 
 $handler = new HlrCallbackHandler();
