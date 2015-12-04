@@ -154,7 +154,7 @@ class HlrLookupClient {
 
 
     /**
-     * Submits asynchronous number type Lookups containing up to 1,000 MSISDNs per request. Results are sent back asynchronously to a callback URL on your server. Use \VmgLtd\HlrCallbackHandler to capture them.
+     * Submits asynchronous number type lookups containing up to 1,000 MSISDNs per request. Results are sent back asynchronously to a callback URL on your server. Use \VmgLtd\HlrCallbackHandler to capture them.
      *
      * @param array $numbers - A list of phone numbers in international format, e.g. +491788735000
      * @param null $route - An optional route assignment, see: http://www.hlr-lookups.com/en/routing-options
