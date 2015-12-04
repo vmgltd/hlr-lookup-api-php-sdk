@@ -22,7 +22,7 @@ echo "\n\n";
  *
  * @return string (JSON)
  *
- * Return example: {"success":true,"messages":[],"results":{"balance":"5878.24600"}}
+ * Return example: { "success":true, "results":{ "system":{ "state":"up" }, "routes":{ "states":{ "IP1":"up", "ST2":"up", "SV3":"up", "IP4":"up", "XT5":"up", "XT6":"up", "NT7":"up", "LC1":"up" } }, "account":{ "lookupsPermitted":true, "balance":"295.23000" } } }
  */
 echo "\n\n";
 echo $client->doHealthCheck();
@@ -59,7 +59,7 @@ echo "\n\n";
 
 
 /**
- * Sets the callback URL for asynchronous lookups. Read more about the concept of asynchronous HLR lookups @ http://www.hlr-lookups.com/en/asynchronous-hlr-lookup-api
+ * Sets the callback URL for asynchronous lookups.
  *
  * @param string $url
  * @return string (JSON)
