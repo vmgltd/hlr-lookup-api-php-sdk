@@ -31,6 +31,6 @@
         "issues": "https://github.com/vmgltd/hlr-lookup-api-php-sdk/issues",
         "source": "https://github.com/vmgltd/hlr-lookup-api-php-sdk"
     },
-    "version": "0.0.10",
+    "version": "0.0.12",
     "license": "Apache-2.0"
 }
