@@ -172,7 +172,7 @@ class HlrLookupClient {
             http_build_query(array(
                 'username' => $this->username,
                 'password' => $this->password,
-                'action' => 'submitAsyncLookupRequest',
+                'action' => 'submitAsyncNumberTypeLookupRequest',
                 'numbers' => self::convertMsisdnsArrayToString($numbers),
                 'route' => $route ? $route : null,
                 'storage' => $storage ? $storage : null
