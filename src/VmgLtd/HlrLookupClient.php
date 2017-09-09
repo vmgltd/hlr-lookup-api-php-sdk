@@ -323,7 +323,7 @@ class HlrLookupClient {
         curl_setopt($curlHandle, CURLOPT_AUTOREFERER, true);
         curl_setopt($curlHandle, CURLOPT_USERAGENT, 'VmgLtd/HlrLookupClient PHP SDK ' . CLIENT_VERSION);
         curl_setopt($curlHandle, CURLOPT_CONNECTTIMEOUT, 30);
-        curl_setopt($curlHandle, CURLOPT_TIMEOUT, 7200);
+        curl_setopt($curlHandle, CURLOPT_TIMEOUT, 30000);
         curl_setopt($curlHandle, CURLOPT_MAXREDIRS, 10);
         curl_setopt($curlHandle, CURLINFO_HEADER_OUT, true);
         curl_setopt($curlHandle, CURLOPT_SSL_VERIFYPEER, false);
