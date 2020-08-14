@@ -106,7 +106,7 @@ $status_code = $response->httpStatusCode;
 $data = $response->responseBody;
 ```
 
-The HLR API Response Object:
+The NT API Response Object:
 
 ```json
 {
@@ -185,7 +185,6 @@ A detailed documentation of the attributes and connectivity statuses in the MNP 
 
 API Documentation
 -----------------
-
 Please inspect https://www.hlr-lookups.com/en/api-docs for detailed API documentation or email us at service@hlr-lookups.com.
 
 Support and Feedback
