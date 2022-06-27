@@ -166,9 +166,7 @@ class HLRLookupClient extends HLRRESTClient {
      */
     private function buildAuthHeaders($path, $method, $params = array()) {
 
-        $serverTime = @file_get_contents('https://www.hlr-lookups.com/api/v2/time');
-        $serverTime = $serverTime === false ? null : json_decode($serverTime);
-        $timestamp = is_null($serverTime) ? time() : $serverTime->time;
+        $timestamp = json_decode(file_get_contents('https://www.hlr-lookups.com/api/v2/time'))->time;
         $body = $method != 'GET' ? (count($params) ? json_encode($params) : null) : null;
         return array(
             'X-Digest-Key: ' . $this->key,
