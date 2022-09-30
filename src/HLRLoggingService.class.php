@@ -16,6 +16,9 @@ class HLRLoggingService {
 
         $type = file_exists($logFile) ? 'a' : 'w';
         $file = fopen($logFile, $type);
+        if ($file === false) {
+            return;
+        }
         fputs($file, date('r', time()) . ' ' . $message . PHP_EOL);
         fclose($file);
 
